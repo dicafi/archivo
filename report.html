@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        html {
+            box-sizing:border-box;
+            font-size: 62.5% /*1rem = 10px*/;
+            font-family: 'Montserrat', sans-serif;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --primary: #ebeff2;
+            --dark: #1a202c;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+        .container {
+            width: min(90%, 120rem);
+            margin: 0 auto;
+        }
+        .header {
+            padding: 2rem;
+            background-color: var(--primary);
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 3rem;
+        }
+        .sale-order h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .sale-order p {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .grid-cols-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 2rem;
+        }
+        .work-data {
+            margin-top: 5rem;
+        }
+        .child-work-data h3 {
+            background-color: var(--dark);
+            padding: 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .supplier p {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .data p {
+            font-weight: bold;
+            margin: 0.5rem 0;
+            font-size: 1.6rem;
+        }
+        .data span {
+            font-weight: normal;
+        }
+        /* TABLE */
+        .table {
+            margin-top: 5rem;
+        }
+        .table-header {
+            display: flex;
+            width: 100%;
+            background-color: var(--dark);
+            padding: 18px 0;
+        }
+
+        .table-row {
+            display: flex;
+            width: 100%;
+            padding: 18px 0;
+        }
+
+        .table-row:nth-of-type(odd) {
+            background: #EEEEEE;
+        }
+
+        .table-data, .header__item {
+            flex: 1 1 20%;
+            text-align: center;
+        }
+        .table-data {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .header__item {
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .title {
+            color: var(--primary);
+            display: inline-block;
+            padding-left: 24px;
+            padding-right: 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        /* Footer */
+        .footer {
+            margin-top: 5rem;
+        }
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem;
+        }
+        .footer .container h3 {
+            background-color: var(--dark);
+            padding: 1rem;
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .footer .container p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .container.logo {
+            margin-top: 5rem;
+            text-align: center;
+        }
+        .footer .quantity {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .footer .quantity p {
+            margin: 1rem 0;
+        }
+        .footer .quantity .total {
+            background-color: var(--primary);
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        /* utilities */
+        .mx-5 {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+    </style>
+</head>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>
+                    Report image
+                </h1>
+            </div>
+            <div class="sale-order">
+                <h3>Orden de compra</h3>
+                <div>
+                    <p>Fecha: <%= @current_order.created_at.strftime('%d/%m/%Y') %></p>
+                    <p>OC#: <%= @current_order.number_id %></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="container grid-cols-2 work-data">
+        <div class="child-work-data data">
+            <h3>Datos Obra</h3>
+            <div class="mx-5">
+                <p>
+                    Obra:
+                    <span>
+                        TORRE OLIVOSs
+                    </span>
+                </p>
+                <p>
+                    Dirección:
+                    <span>
+                        Valle de Bravo 17, Lomas de Chapultepec, Miguel Hidalgo
+                    </span>
+                </p>
+                <p>
+                    Cuidad:
+                    <span>
+                        CDMX
+                    </span>
+                </p>
+                <p>
+                    Gerente de obra:
+                    <span>
+                        Freddy
+                    </span>
+                </p>
+                <p>
+                    Jefe de obra:
+                    <span>
+                        Julio
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="child-work-data supplier">
+            <h3>Porveedor</h3>
+            <div class="mx-5">
+                <p>CAENCO</p>
+            </div>
+        </div>
+    </section>
+    <main class="container">
+        <div class="table">
+            <div class="table-header">
+                <div class="header__item">
+                    <p  class="title">Codigo</p>
+                </div>
+                <div class="header__item">
+                    <p class="title">Producto</p>
+                </div>
+                <div class="header__item">
+                    <p class="title">Cantidad</p>
+                </div>
+                <div class="header__item">
+                    <p  class="title">P.U.</p>
+                    </div>
+                <div class="header__item">
+                    <p class="title">Unidad</p>
+                </div>
+                <div class="header__item">
+                    <p class="title">Total</p>
+                </div>
+            </div>
+            <div class="table-content">
+                <div class="table-row">
+                    <div class="table-data">Ton.cem</div>
+                    <div class="table-data">
+                        Ton de cemento moctezuma 50kg
+                    </div>
+                    <div class="table-data">
+                        3.00
+                    </div>
+                    <div class="table-data">
+                        $ 3,000.00
+                    </div>
+                    <div class="table-data">
+                        TON
+                    </div>
+                    <div class="table-data">
+                        $ 9,000.00
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-data">Ton.cem</div>
+                    <div class="table-data">
+                        Ton de cemento moctezuma 50kg
+                    </div>
+                    <div class="table-data">
+                        3.00
+                    </div>
+                    <div class="table-data">
+                        $ 3,000.00
+                    </div>
+                    <div class="table-data">
+                        TON
+                    </div>
+                    <div class="table-data">
+                        $ 9,000.00
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-data">Ton.cem</div>
+                    <div class="table-data">
+                        Ton de cemento moctezuma 50kg
+                    </div>
+                    <div class="table-data">
+                        3.00
+                    </div>
+                    <div class="table-data">
+                        $ 3,000.00
+                    </div>
+                    <div class="table-data">
+                        TON
+                    </div>
+                    <div class="table-data">
+                        $ 9,000.00
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h3>
+                    Comentarios e instrucciones de envio
+                </h3>
+                </p>
+                <p>
+                    NOTA:
+                    <span>
+                        El pago de esta factura deberá realizarse a más tardar el día 10 de cada mes, de lo contrario se cobrarán intereses moratorios al tipo del 1.5% mensual.
+                    </span>
+                </p>
+            </div>
+            <div class="quantity">
+                <p>Subtotal: $ 9,000.00</p>
+                <p>IVA: $ 1,440.00</p>
+                <p class="total">Total: $ 10,440.00</p>
+            </div>
+        </div>
+    </footer>
+    <div class="container logo">
+        Logo de loatan
+    </div>
+</body>
+</html>
